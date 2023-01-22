@@ -6,12 +6,6 @@ pipeline {
                     checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adiparwira/devops-test']]])
                     sh 'mvn clean install'
                 }
-                post {
-                    success {
-                        echo 'Now Archiving...'
-                        archiveArtifacts artifacts: '**/target/*.jar'
-                    }
-                }
             }
 
             stage('Docker Build') {
