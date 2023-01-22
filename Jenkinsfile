@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages{
+            stage('Checkout') {
+                steps {
+                    script {
+                        git url: 'https://github.com/adiparwira/devops-test'
+                    }
+                }
+            }
+
             stage('Maven Build'){
                 steps {
                     sh 'mvn clean package'
