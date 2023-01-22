@@ -3,7 +3,8 @@ pipeline {
     stages{
             stage('Maven Build'){
                 steps {
-                    sh 'mvn clean package'
+                    checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adiparwira/devops-test']]])
+                    sh 'mvn clean install'
                 }
                 post {
                     success {
