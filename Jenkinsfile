@@ -4,7 +4,7 @@ pipeline {
             stage('Checkout') {
                 steps {
                     script {
-                        git url: 'https://github.com/adiparwira/devops-test'
+                        git url: 'https://github.com/adiparwira/devops-test', credentialsId: 'github'
                     }
                 }
             }
